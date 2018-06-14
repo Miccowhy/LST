@@ -8,7 +8,6 @@ regex_variables = r"([p][\d]*)"
 
 def printer(truth_dict, var_list):
     truth_table = sorted(truth_dict, reverse=True)
-    #print(truth_table)
 
     print("False for:\n")
     for x in var_list:
@@ -38,7 +37,6 @@ def manipulator(function):
     for x in range(power):
         var_value = bin(x)[2:].zfill(var_amount)
         truth_dict[var_value] = solver(var_value, var_list, function)
-    #print(truth_dict)
     printer(truth_dict, var_list)
 
 def syntax():
@@ -48,7 +46,6 @@ def syntax():
     i = 0
 
     forbidden = re.findall(regex_forbidden, checker)
-    #print(forbidden)
     if forbidden == []:
         single_var = re.findall(regex_variables, function)
         if function == single_var[0]:
@@ -56,7 +53,6 @@ def syntax():
         else:
             while checker != "p0":
                 parser = re.findall(regex, checker)
-                #print(parser)
                 if parser == []:
                     print("Formula not valid")
                     validity = False
@@ -65,7 +61,6 @@ def syntax():
                 for x in parser:
                     i = parser.index(x)
                     checker = checker.replace(x, "p0", 1)
-                    #print(checker)
                 i += 1
             if validity == True:
                 manipulator(function)
